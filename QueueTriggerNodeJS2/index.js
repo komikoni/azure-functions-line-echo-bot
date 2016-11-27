@@ -20,8 +20,7 @@ function post_line(event)
         }
     };
     var post_req = https.request(post_options);
-    post_req.write(post_data);
-    post_req.write(post_data);
+    post_req.write(post_data+post_data);
     post_req.end();
 }
 
