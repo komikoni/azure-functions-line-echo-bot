@@ -10,11 +10,12 @@ function post_line(event)
       case 'location':
       case 'sticker':
         message = event.message;
+        message.text = message.text+'ったら'+message.text
         break;
       default:
         message = {
           'type': 'text',
-          'text': 'テキスト、場所、スタンプ位以外対応していません'
+          'text': 'テキスト、場所、スタンプ 以外対応していません'
         };
     }
     var post_data = JSON.stringify({
