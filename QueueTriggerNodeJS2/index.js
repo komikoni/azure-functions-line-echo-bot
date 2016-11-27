@@ -4,6 +4,19 @@ var url   = require("url");
 
 function post_line(event)
 {
+    var message;
+    switch (event.message.type) {
+      case 'text':
+      case 'location':
+      case 'sticker':
+        message = event.message;
+        break;
+      default:
+        message = {
+          'type': 'text',
+          'text': 'テキスト、場所、スタンプ位以外対応していません'
+        };
+    }
     var post_data = JSON.stringify({
         "replyToken" : event.replyToken,
         "messages"   : [ event.message ]
