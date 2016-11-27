@@ -16,11 +16,11 @@ function post_line(event)
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer {' + process.env.LINE_CHANNEL_ACCESS_TOKEN + '}',
-            'Content-Length': Buffer.byteLength(post_data*2)
+            'Content-Length': Buffer.byteLength(post_data)
         }
     };
     var post_req = https.request(post_options);
-    post_req.write(post_data+post_data);
+    post_req.write(post_data);
     post_req.end();
 }
 
