@@ -10,7 +10,7 @@ function post_line(event)
       case 'location':
       case 'sticker':
         message = event.message;
-        message.text = message.text+'ったら'+message.text
+        message.text = message.text+' 好きだよ '+message.text
         break;
       default:
         message = {
