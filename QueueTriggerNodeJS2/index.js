@@ -3,8 +3,8 @@ var https = require("https");
 var url   = require("url");
 
 function post_line(event){
+  var message;
   switch (event.type) {
-    var message;
     case 'message':
       switch (event.message.type) {
         case 'text':
