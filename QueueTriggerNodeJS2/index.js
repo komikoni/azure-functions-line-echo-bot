@@ -2,22 +2,36 @@
 var https = require("https");
 var url   = require("url");
 
-function post_line(event)
-{
+function post_line(event){
+  switch (event.type) {
     var message;
-    switch (event.message.type) {
-      case 'text':
-      case 'location':
-      case 'sticker':
-        message = event.message;
-        message.text = message.text+' 好きだよ '+message.text
-        break;
-      default:
-        message = {
-          'type': 'text',
-          'text': 'テキスト、場所、スタンプ 以外対応していません'
-        };
-    }
+    case 'message':
+      switch (event.message.type) {
+        case 'text':
+        case 'location':
+        case 'sticker':
+          message = event.message;
+          message.text = message.text+' 好きだよ '+message.text
+          break;
+        default:
+          message = {
+            'type': 'text',
+            'text': 'テキスト、場所、スタンプ 以外対応していません'
+          };
+      }
+      break;
+    case 'beacon':
+      message = {
+        'type': 'text',
+        'text': 'ビーコンイベントです'
+      };
+      break;
+    default:
+      message = {
+        'type': 'text',
+        'text': 'メッセージとビーコンイベント以外対応していません'
+      };
+  }
     var post_data = JSON.stringify({
         "replyToken" : event.replyToken,
         "messages"   : [ message ]

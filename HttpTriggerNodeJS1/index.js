@@ -10,12 +10,12 @@ module.exports = function(context, req) {
     context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 
     if (validate_signature(req.headers['x-line-signature'], req.body)) {
-	context.bindings.outputQueueItem = req.body;
+    	context.bindings.outputQueueItem = req.body;
     }
     else {
-	context.log('fail to validate signature');
+	     context.log('fail to validate signature');
     }
-    
+
     context.res = { body : "" };
     context.done();
 };
