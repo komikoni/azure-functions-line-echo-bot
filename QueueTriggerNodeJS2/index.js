@@ -23,7 +23,7 @@ function post_line(event){
     case 'beacon':
       message = {
         'type': 'text',
-        'text': 'ビーコンイベントです'
+        'text': 'ビーコンイベントです' + JSON.stringify(event,null,4)
       };
       break;
     default:
